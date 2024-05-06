@@ -2,18 +2,30 @@
 #define BIG_INT_H
 
 #include <string>
+#include <vector>
 
 namespace ml {
 	class BigInt {
 	public:
 
 		BigInt() = default;
+		BigInt(int val);
+		BigInt(const std::string& val);
+		BigInt(const std::vector<int>& val);
+
+		//for test
+		std::vector<int> GetVectorArray() const noexcept;
 
 
 	private:
-		size_t capacity = 0;
-		size_t size_ = 0;
-		char* arr_ = nullptr;
+		bool is_positive;
+		std::vector<int> number;
+
+		void CheckIsPositive(int val) noexcept;
+		void CheckIsPositive(const std::string& val) noexcept;
+		void CheckIsPositive(const std::vector<int>& val) noexcept;
+
+		void SettingSetNumber(int val);
 	};
 }
 
