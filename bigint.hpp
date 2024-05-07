@@ -11,13 +11,15 @@ namespace ml {
 		BigInt() = default;
 		BigInt(int val);
 		BigInt(const std::string& val);
-		BigInt(const std::vector<int>& val);
+
+		BigInt(const BigInt& other);
+		BigInt& operator=(const BigInt& other);
 
 		//for test
 		std::vector<int> GetVectorArray() const noexcept;
 
-
 	private:
+
 		bool is_positive;
 		std::vector<int> number;
 
@@ -26,6 +28,9 @@ namespace ml {
 		void CheckIsPositive(const std::vector<int>& val) noexcept;
 
 		void SettingSetNumber(int val);
+		void SetFromStringNumber(const std::string& str) noexcept;
+		void Coup();
+		void SwapBigInt(BigInt& other);
 	};
 }
 
